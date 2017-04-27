@@ -2,4 +2,4 @@ install: make dep
 script: make test
 language: c
 sudo: required
-compiler: clang
+compiler: gcc
