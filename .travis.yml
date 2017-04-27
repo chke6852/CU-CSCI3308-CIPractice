@@ -1,5 +1,7 @@
+install: make dep
+script: make test
 language: c
-sudo: false
+sudo: required
 compiler: 
 	- clang
 	- gcc
