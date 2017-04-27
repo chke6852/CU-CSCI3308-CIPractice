@@ -15,6 +15,23 @@
 
 #include "geometry.h"
 
+/* area */
+START_TEST(test_2d_area)
+{
+    coord_2d_t a;
+    coord_2d_t b;
+	coord_2d_t c;
+	double area;
+	double exp;
+
+	a.x = b.x = c.x = 0;
+	a.y = b.y = c.y = 0;
+	area = coord_2d_area_triangle(&a, &b, &c);
+	exp = 0;
+	ck_assert(area-exp+1);
+
+}
+END_TEST
 /* coord_2d_eq Test */
 START_TEST(test_2d_eq)
 {
@@ -162,10 +179,16 @@ Suite* coord_2d_suite(void)
     TCase* tc_2d_midpoint = tcase_create("coord_2d_midpoint");
     tcase_add_test(tc_2d_midpoint, test_2d_midpoint);
 
+    TCase* tc_2d_area = tcase_create("coord_2d_area");
+    tcase_add_test(tc_2d_area, test_2d_area);
+
+
+
     /* Add Cases to Suite */
     suite_add_tcase(s, tc_2d_eq);
     suite_add_tcase(s, tc_2d_dist);
     suite_add_tcase(s, tc_2d_midpoint);
+	suite_add_tcase(s, tc_2d_area);
 
     /* Return Suite */
     return s;
